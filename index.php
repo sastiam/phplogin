@@ -1,3 +1,3 @@
-<? 
-    phpinfo()
+<?php
+    header('Location: register.html');
 ?>
