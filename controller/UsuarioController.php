@@ -15,9 +15,18 @@
                 $user->__SET('pass', $_POST['password']);
 
                 $model->registrar($user);
-                
+                if($model) {
+                    header('Location: ../index.php');
+                } else {
+                    header('Location: ../register.php');
+                }
                 break;
             
+            case 'login':
+                $user->__SET('usuario', $_POST['usuario']);
+                $user->__SET('pass', $_POST['password']);
+
+                $model->login($user);
             default:
                 # code...
                 break;

@@ -24,6 +24,24 @@
                 die($e->getMessage());
             }
         }
+
+        public function login(Usuario $data) {
+            try {
+
+                $sql = $this->pdo->prepare('SELECT * FROM usuario WHERE user IN(?) AND pass IN(?)');
+                $sql->execute(array(
+                    $data->usuario,
+                    md5($data->pass),
+                ));
+                $smt = $sql->fetch(PDO::FETCH_ASSOC);
+                if($smt) {
+                    $_SESSION['nombre'] = $smt['nombre'];
+                    header('Location: ../bienvenido.php');
+                }
+            } catch(Exception $e) {
+                die($e->getMessage());
+            }
+        }
     }
     
 ?>

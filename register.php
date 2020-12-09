@@ -8,7 +8,7 @@
 <body>
     <form action="controller/UsuarioController.php?action=registrar" method="post">
         <input name='nombre' placeholder="Nombre">
-        <input name='usuario' placeholder="Usuari">
+        <input name='usuario' placeholder="Usuario">
         <input name='password' placeholder="Contraseña">
         <input type="submit" value="Enviar">
     </form>
