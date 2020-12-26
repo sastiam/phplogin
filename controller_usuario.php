@@ -26,6 +26,7 @@
                 $login = $crud->accesoUsuario($_POST['nick'], $_POST['clave']);
                 if($login) {
                     session_start();
+                    session_id($login['nick']);
                     $_SESSION['nick'] = $login['nick'];
                     $_SESSION['nombre'] = $login['nombre'];
                     $_SESSION['clave'] = $login['clave'];
@@ -36,6 +37,11 @@
                     header('Location: error.php');
                     exit();
                 }
+                break;
+            case 'logout':
+                session_destroy();
+                header('Location: index.php');
+                exit();
                 break;
             default:
                 echo 'default switch';

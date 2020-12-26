@@ -1,4 +1,8 @@
-
+<?php
+    if(!empty($_SESSION['nombre'])) {
+        header('Location: cuenta.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -11,15 +11,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta</title>
-    <link href='https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css' rel="stylesheet">
+    <link href='https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css' rel="stylesheet">
     <link rel="stylesheet" href="cuenta.css">
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
-        <div>
-        <h1 class="float-md-center mb-0">PHPPDO - Cuenta</h1>
-
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h1 class="masthead-brand">PHPPDO - Cuenta</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Actualizar cuenta</a>
+                <a class="nav-link" href="controller_usuario.php?action=logout">Desconectar</a>
+            </nav>
         </div>
     </header>
 

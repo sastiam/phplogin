@@ -1,4 +1,8 @@
-
+<?php
+    if(!empty($_SESSION['nombre'])) {
+        header('Location: cuenta.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +23,7 @@
         <div class="col-lg-4 offset-lg-2 col-md-6 offset-md-3">
             <div class="pt-4">
                 <h2><span class="fa fa-superpowers text-primary px-md-2"></span>PHPLOGIN PDO</h2>
+
             </div>
             <div class="mt-3 mt-md-5">
                 <h5>Ingresa a tu cuenta</h5>
@@ -32,7 +37,7 @@
                     <input type="submit" value="Login" class="btn btn-primary btn-block mb-3">
 
                     <div class="register mt-5">
-                        <p>¿No tienes una cuenta? <a href="#">Registrate</a></p>
+                        <p>¿No tienes una cuenta? <a href="registrarse.php">Registrate</a></p>
                     </div>
                 </form>
                 </div>
