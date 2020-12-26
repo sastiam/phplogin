@@ -27,12 +27,20 @@
             </div>
             <div class="mt-3 mt-md-5">
                 <h5>Ingresa a tu cuenta</h5>
-                <form class="pt-4" method="post" action="controller_usuario.php?action=login">
+                <form class="pt-4 needs-validation" method="post" action="controller_usuario.php?action=login" id="login">
                     
-                    <div class="d-flex flex-column pb-3"> <label for="nick">Nick</label> <input type="text" name="nick" id="nick" class="border-bottom border-primary"> </div>
-                    <div class="d-flex flex-column pb-3"> <label for="clave">Contraseña</label> <input type="password" name="clave" id="pwd" class="border-bottom border-primary"> </div>
+                    <div class="d-flex flex-column pb-3"> 
+                        <label for="nick">Nick</label> 
+                        <input type="text" name="nick" class="border-bottom border-primary" required> 
+                    </div>
+                    <div class="d-flex flex-column pb-3"> 
+                        <label for="clave">Contraseña</label> 
+                        <input type="password" name="clave" class="border-bottom border-primary" required> 
+                    </div>
                     <div class="d-flex jusity-content-end pb-4">
-                        <div class="ml-auto"> <a href="#" class="text-danger text-decoration-none">¿Te olvidaste tu contraseña?</a> </div>
+                        <div class="ml-auto"> 
+                        <a href="#" class="text-danger text-decoration-none">¿Te olvidaste tu contraseña?</a> 
+                        </div>
                     </div> 
                     <input type="submit" value="Login" class="btn btn-primary btn-block mb-3">
 
@@ -45,5 +53,29 @@
         </div>
     </div>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script>
+    (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+            form.classList.add('was-validated');
+            console.log(form);
+        }, false)
+        })
+    })()
+    $(document).ready(function() {
+  $("#login").validate();
+    });
+</script>
 </body>
 </html>

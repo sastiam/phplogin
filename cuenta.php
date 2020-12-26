@@ -27,12 +27,12 @@
     </header>
 
     <main class="px-3">
-        <h1>Bienvenido @<?php echo $_SESSION['nombre'] ?></h1>
+        <h1>Bienvenido 😎 @<?php echo $_SESSION['nombre'] ?></h1>
         <p class="lead">Este es el dashboard principal de la cuenta</p>
     </main>
 
     <footer class="mt-auto text-white-50">
-        <p>Grupo integrado por <a href="#" class="text-white">@Ayrton</a> y <a href="#" class="text-white">@Sebastian</a>.</p>
+        <p>💻 Grupo integrado por <a href="#" class="text-white">@Ayrton</a> y <a href="#" class="text-white">@Sebastian</a>.</p>
     </footer>
     </div>
 </body>

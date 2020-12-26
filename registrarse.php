@@ -26,22 +26,22 @@
             </div>
             <div class="mt-3 mt-md-5">
                 <h5>Registra tu cuenta</h5>
-                <form class="pt-4" method="post" action="controller_usuario.php?action=registrar">
+                <form class="pt-4 needs-validation" method="post" action="controller_usuario.php?action=registrar" id="registro">
                     <div class="d-flex flex-column pb-3"> 
                         <label for="nombre">Nombre</label> 
-                        <input type="text" name="nombre" class="border-bottom border-primary"> 
+                        <input type="text" name="nombre" class="border-bottom border-primary" required> 
                     </div>
                     <div class="d-flex flex-column pb-3"> 
                         <label for="nick">Nick</label> 
-                        <input type="text" name="nick" class="border-bottom border-primary"> 
+                        <input type="text" name="nick" class="border-bottom border-primary" required> 
                     </div>
                     <div class="d-flex flex-column pb-3"> 
                         <label for="clave">Contraseña</label> 
-                        <input type="password" name="clave" class="border-bottom border-primary"> 
+                        <input type="password" name="clave" class="border-bottom border-primary" required> 
                     </div>
                     <input type="submit" id="registrateBtn" value="Registrate" class="btn btn-primary btn-block mb-3">
                     <div class="register mt-5">
-                        <p>¿Ya tienes una cuenta? <a href="#">Logueate</a></p>
+                        <p>¿Ya tienes una cuenta? <a href="index.php">Logueate</a></p>
                     </div>
                 </form>
                 </div>
@@ -49,5 +49,29 @@
         </div>
     </div>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script>
+    (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+            form.classList.add('was-validated');
+            console.log(form);
+        }, false)
+        })
+    })()
+    $(document).ready(function() {
+  $("#registro").validate();
+    });
+</script>
 </body>
 </html>

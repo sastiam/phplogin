@@ -16,16 +16,15 @@
         public function accesoUsuario($nick, $pass) {
             try {
                 $hash_pass = md5($pass);
-                $stmt = ($this->conn)->prepare("SELECT * FROM usuario WHERE nick IN (?) AND pass IN (?)");
+                $stmt = ($this->conn)->prepare("SELECT * FROM usuario WHERE nick = ? AND pass = ?");
                 $stmt->bindParam(1, $nick);
                 $stmt->bindParam(2, $hash_pass);
 
-                $stmt->execute();
-                $data = $stmt->fetch(PDO::FETCH_ASSOC);
-                if($data != null) {
+                if($stmt->execute()) {
+                    $data = $stmt->fetch(PDO::FETCH_ASSOC);
                     return $data;
                 } else {
-                    return 'datos invalidos';
+                    return false;
                 }
 
             } catch (\PDOException $e) {
@@ -77,7 +76,6 @@
 
         public function actualizarUsuario($nick, Usuario $u) {
             $dataId = $this->buscarUsuarioId($nick);
-            echo 'id'.$dataId;
             try {
                 if($dataId != null) {
                     $stmt = ($this->conn)->prepare("UPDATE usuario SET nombre=?, nick=?, pass=? WHERE id=?");

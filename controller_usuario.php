@@ -26,19 +26,17 @@
                 $login = $crud->accesoUsuario($_POST['nick'], $_POST['clave']);
                 if($login) {
                     session_start();
-                    session_id($login['nick']);
-                    $_SESSION['nick'] = $login['nick'];
                     $_SESSION['nombre'] = $login['nombre'];
-                    $_SESSION['clave'] = $login['clave'];
-                    
                     header('Location: cuenta.php');
                     exit();
                 } else {
+                    session_destroy();
                     header('Location: error.php');
                     exit();
                 }
                 break;
             case 'logout':
+                unset($_SESSION);
                 session_destroy();
                 header('Location: index.php');
                 exit();
