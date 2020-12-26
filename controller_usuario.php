@@ -39,19 +39,17 @@
             case 'actualizar':
                 $crud = new CRUD();
                 $usuario = new Usuario($_POST['nombre'], $_POST['nick'], $_POST['clave']);
-                        
-                if($crud->actualizarUsuario($_SESSION['nick'], $usuario)) {
+                session_start();
+                $actualizar = $crud->actualizarUsuario($_SESSION['nick'], $usuario);
+                if ($crud->actualizarUsuario($_SESSION['nick'], $usuario)) {
                     unset($_SESSION);
                     session_destroy();
                     header('Location: index.php');
-                    exit();
                 } else {
                     unset($_SESSION);
                     session_destroy();
                     header('Location: error.php');
-                    echo 'error';
-                    exit(); 
-                 }
+                }
                 break;    
                 
             case 'logout':

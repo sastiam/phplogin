@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(empty($_SESSION['nombre'])) {
+    if(empty($_SESSION['nick'])) {
         header('Location: index.php');
     }
 ?>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="d-flex flex-column pb-3"> 
                         <label for="clave">Contraseña</label> 
-                        <input type="password" name="clave" class="border-bottom border-primary" required> 
+                        <input type="password" name="clave" class="border-bottom border-primary" value="" required> 
                     </div>
                     <input type="submit" id="actualizarBtn" value="Actualizar cuenta" class="btn btn-primary btn-block mb-3">
                 </form>
