@@ -1,16 +1,16 @@
-<?php 
-    require 'crud_usuario.php';
-    #require 'controller_login.php';
 
-    #$registro = new CRUD();
-    #$usuario = new Usuario('nadd', 'nad', '12345678');
-    #$funcion = $registro->registrarUsuario($usuario);
-
-    $crud = new CRUD();
-    print_r($crud->actualizarUsuario('nad', new Usuario('nadd', 'natd', '123456789')));
-    #$controller = new Controller();
-    #print_r($controller->comprobarUsuario('tiam'));
-    
-    #$funcion = $registro->listarDatos();
-    #print_r($funcion);
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="controller_usuario.php?action=login" method="post">
+        <input name="nick" placeholder="Usuario">
+        <input name="clave" placeholder="Contraseña">
+        <input type="submit" placeholder="Enviar">
+    </form>
+</body>
+</html>

@@ -1,36 +1,32 @@
 <?php 
 
     require 'conexion.php';
-    require 'controller_login.php';
     require 'usuario.php';
-
-    #$dtb = new Database('localhost', 'phplogin', 'grupo1', 'grupo1');
 
     class CRUD {
 
         private $conn;
-        private $controller;
 
         public function __construct()
         {
-            // cambiar por valores de tu base de datos local
-            # phplogin: base de datos
-            # grupo1: username de bd
-            # grupo1: password de bd
             $dtb = new Database('localhost', 'phplogin', 'grupo1', 'grupo1');
             $this->conn = $dtb->init();
         }
         
         public function accesoUsuario($nick, $pass) {
             try {
+                $hash_pass = md5($pass);
                 $stmt = ($this->conn)->prepare("SELECT * FROM usuario WHERE nick IN (?) AND pass IN (?)");
                 $stmt->bindParam(1, $nick);
-                $stmt->bindParam(2, md5($pass));
+                $stmt->bindParam(2, $hash_pass);
 
                 $stmt->execute();
-                $usuario = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                return $usuario;
+                $data = $stmt->fetch(PDO::FETCH_ASSOC);
+                if($data != null) {
+                    return $data;
+                } else {
+                    return 'datos invalidos';
+                }
 
             } catch (\PDOException $e) {
                 return $e->getMessage();
