@@ -20,7 +20,7 @@
         <div class="inner">
             <h1 class="masthead-brand">PHPPDO - Cuenta</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="#">Actualizar cuenta</a>
+                <a class="nav-link active" href="actualizar.php">Actualizar cuenta</a>
                 <a class="nav-link" href="controller_usuario.php?action=logout">Desconectar</a>
             </nav>
         </div>

@@ -76,20 +76,25 @@
 
         public function actualizarUsuario($nick, Usuario $u) {
             $dataId = $this->buscarUsuarioId($nick);
+            $checkUsuario = $this->checkUsuario($u->getNick());
             try {
-                if($dataId != null) {
-                    $stmt = ($this->conn)->prepare("UPDATE usuario SET nombre=?, nick=?, pass=? WHERE id=?");
-                    $stmt->execute(array(
-                        $u->getNombre(),
-                        $u->getNick(),
-                        md5($u->getClave()),
-                        $dataId
-                    ));
-                    
-                    return 'Datos actualizados correcatmente';
-                } else {
-                    return 'Error al actualizar los datos';
-                }
+               if (!$checkUsuario) {
+                    if($dataId != null) {
+                        $stmt = ($this->conn)->prepare("UPDATE usuario SET nombre=?, nick=?, pass=? WHERE id=?");
+                        $stmt->execute(array(
+                            $u->getNombre(),
+                            $u->getNick(),
+                            $u->getClave(),
+                            $dataId
+                        ));
+                        
+                        return true;
+                    } else {
+                        return false;
+                    }
+               } else {
+                   return false;
+               }
             } catch (\PDOException $e) {
                 $e->getMessage();
             }

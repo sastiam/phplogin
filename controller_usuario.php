@@ -27,20 +27,40 @@
                 if($login) {
                     session_start();
                     $_SESSION['nombre'] = $login['nombre'];
+                    $_SESSION['nick'] = $login['nick'];
                     header('Location: cuenta.php');
                     exit();
                 } else {
-                    session_destroy();
                     header('Location: error.php');
                     exit();
                 }
                 break;
+            
+            case 'actualizar':
+                $crud = new CRUD();
+                $usuario = new Usuario($_POST['nombre'], $_POST['nick'], $_POST['clave']);
+                        
+                if($crud->actualizarUsuario($_SESSION['nick'], $usuario)) {
+                    unset($_SESSION);
+                    session_destroy();
+                    header('Location: index.php');
+                    exit();
+                } else {
+                    unset($_SESSION);
+                    session_destroy();
+                    header('Location: error.php');
+                    echo 'error';
+                    exit(); 
+                 }
+                break;    
+                
             case 'logout':
                 unset($_SESSION);
                 session_destroy();
                 header('Location: index.php');
                 exit();
                 break;
+
             default:
                 echo 'default switch';
                 break;
