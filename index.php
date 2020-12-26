@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHPLogin</title>
-</head>
-<body>
-    <a href="register.html">Registrar</a>
-    <a href="login.html">Login</a>
-</body>
-</html>
+<?php 
+    require 'crud_usuario.php';
+    #require 'controller_login.php';
+
+    #$registro = new CRUD();
+    #$usuario = new Usuario('nadd', 'nad', '12345678');
+    #$funcion = $registro->registrarUsuario($usuario);
+
+    $crud = new CRUD();
+    print_r($crud->actualizarUsuario('nad', new Usuario('nadd', 'natd', '123456789')));
+    #$controller = new Controller();
+    #print_r($controller->comprobarUsuario('tiam'));
+    
+    #$funcion = $registro->listarDatos();
+    #print_r($funcion);
+?>
