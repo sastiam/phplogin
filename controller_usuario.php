@@ -27,6 +27,8 @@
                 if($login) {
                     session_start();
                     $_SESSION['nick'] = $login['nick'];
+                    $_SESSION['nombre'] = $login['nombre'];
+                    $_SESSION['clave'] = $login['clave'];
                     
                     header('Location: cuenta.php');
                     exit();
