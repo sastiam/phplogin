@@ -43,12 +43,12 @@
                         $u->getNick(),
                         $u->getClave()
                     ))) {
-                        return 'registrado';
+                        return true;
                     } else {
                         return var_dump($stmt->errorInfo());
                     }
                 } else {
-                    return 'usuario en uso, elija otro';
+                    return false;
                 }
             } catch(PDOException $e) {
                 return $e->getMessage();

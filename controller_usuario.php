@@ -14,8 +14,10 @@
                 
                 $registrar = $crud->registrarUsuario($usuario);
                 if($registrar) {
+                    echo 'Registro satisfactorio';
                     header('Location: index.php');
                 } else {
+                    echo 'Error al registrarse';
                     header('Location: registrarse.php');
                 }
                 break;
@@ -27,6 +29,9 @@
                     $_SESSION['nick'] = $login['nick'];
                     
                     header('Location: cuenta.php');
+                    exit();
+                } else {
+                    header('Location: error.php');
                     exit();
                 }
                 break;
