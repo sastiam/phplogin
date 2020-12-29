@@ -121,6 +121,40 @@
             }
             
         }
+
+        public function llaveUsuario(Usuario $u) {
+            $check = $this->checkUsuario($u->getNick());
+            // Generar llave random
+            // $generador = rand(1, 9);
+            $llave = '';
+            for ($i=0; $i <4; $i++) {
+                $generador = rand(1, 9);
+                $llave = $llave . strval($generador);
+            }
+
+            try {
+                $stmt = ($this->conn)->prepare("CALL registrarUsuario(?, ?, ?, ?);");
+                //$stmt->bindParam(':nombre', $u->getNombre());
+                //$stmt->bindParam(':nick', $u->getNick());
+                //$stmt->bindParam(':clave', $u->getClave());
+                //$stmt->bindParam(':llave', $llave);
+
+                if (!$check) {
+                    if($stmt->execute(array(
+                        $u->getNombre(),
+                        $u->getNick(),
+                        $u->getClave(),
+                        $llave,
+                    ))) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
     }
 
 ?>

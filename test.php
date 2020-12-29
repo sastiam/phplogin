@@ -1,14 +1,18 @@
 <?php
-    session_start();
+    // algoritmo para generador de llave
+        $llave = '';
+        for ($i=0; $i <4; $i++) {
+                
+            $generador = rand(1, 9);
+            $llave = $llave . strval($generador);
 
-    require 'crud_usuario.php';
+        }
 
-    $usuario = new Usuario("nattts", "nat", "12345");
+        require 'crud_usuario.php';
 
-    $crud = new CRUD();
+        $crud = new CRUD;
 
-    $actualizar = $crud->actualizarUsuario($_SESSION['nick'], $usuario);
-
-    echo $actualizar;
+        $crud->llaveUsuario(new Usuario("Nicols", "nicol1", "123456789"));
+        print_r($crud);
 ?>
 
