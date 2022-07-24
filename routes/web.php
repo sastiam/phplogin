@@ -15,5 +15,9 @@
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->post('users', ['uses' => 'CreateUserController']);
+    $router->group(['prefix' => 'users'], function () use ($router) {
+        $router->post('', ['uses' => 'CreateUserController']);
+        $router->get('', ['uses' => 'FindAllUsersController']);
+        $router->get('findById/{user_id}', ['uses' => 'FindUserByIdController']);
+    });
 });

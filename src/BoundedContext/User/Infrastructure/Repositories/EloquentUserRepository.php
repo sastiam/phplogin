@@ -3,14 +3,13 @@
 namespace Src\BoundedContext\User\Infrastructure\Repositories;
 
 use App\Models\User as EloquentUserModel;
+use Illuminate\Support\Collection;
 use Src\BoundedContext\User\Domain\Contracts\UserRepositoryContract;
 use Src\BoundedContext\User\Domain\User;
 use Src\BoundedContext\User\Domain\UserFactory;
-use Src\BoundedContext\User\Domain\ValueObjects\UserId;
 use Src\BoundedContext\User\Domain\ValueObjects\UserEmail;
 use Src\BoundedContext\User\Domain\ValueObjects\UserName;
 use Src\Shared\Domain\Model;
-use Src\Shared\Domain\ModelInterface;
 use Src\Shared\Domain\ValueObjects\ModelId;
 
 class EloquentUserRepository implements UserRepositoryContract
@@ -19,6 +18,25 @@ class EloquentUserRepository implements UserRepositoryContract
     public function delete(ModelId $id): void
     {
         // TODO: Implement delete() method.
+    }
+
+    public function findAll() : Collection
+    {
+        /**
+         * @var \Illuminate\Database\Eloquent\Collection $users
+         */
+        $users = EloquentUserModel::all();
+
+        return $users->map(function ($user) {
+            return UserFactory::create(
+                $user->user_id,
+                $user->name,
+                $user->email,
+                $user->email_verified_at,
+                $user->password,
+                $user->remember_token
+            );
+        }); 
     }
 
     public function find(ModelId $id): ?Model

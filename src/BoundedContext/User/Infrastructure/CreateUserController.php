@@ -38,9 +38,9 @@ class CreateUserController
             $userRememberToken
         );
 
-        $getUserByCriteriaUseCase = new GetUserByIdUseCase($this->repository);
+        $getUserByIdUseCase = new GetUserByIdUseCase($this->repository);
 
-        return $getUserByCriteriaUseCase->__invoke($userId);
+        return $getUserByIdUseCase->__invoke($userId);
     }
 
 }

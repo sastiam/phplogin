@@ -2,10 +2,8 @@
 
 namespace Src\BoundedContext\User\Application;
 
-use DateTime;
 use Src\BoundedContext\User\Domain\Contracts\UserRepositoryContract;
 use Src\BoundedContext\User\Domain\User;
-use Src\BoundedContext\User\Domain\UserFactory;
 use Src\BoundedContext\User\Domain\ValueObjects\UserEmail;
 use Src\BoundedContext\User\Domain\ValueObjects\UserName;
 
