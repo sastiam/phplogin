@@ -6,3 +6,4 @@ Homestead.yaml
 .phpunit.cache/
 .vscode
 database/*.sqlite
+database/database.sqlite
